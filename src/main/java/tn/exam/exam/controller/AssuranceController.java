@@ -29,14 +29,14 @@ public class AssuranceController {
 
     @PostMapping("/add")
     @ResponseBody
-    public Assurance addAssurance(@RequestBody Assurance Assurance) {
-        return assuranceService.addAssurance(Assurance);
+    public Assurance addAssurance(@RequestBody Assurance assurance) {
+        return assuranceService.addAssurance(assurance);
     }
 
     @PostMapping("/update")
     @ResponseBody
-    public Assurance updateAssurance(@RequestBody Assurance Assurance) {
-        return assuranceService.updateAssurance(Assurance);
+    public Assurance updateAssurance(@RequestBody Assurance assurance) {
+        return assuranceService.updateAssurance(assurance);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -48,7 +48,7 @@ public class AssuranceController {
 
     @PostMapping("/ajouterAssurance/{cinBF}/{matricule}")
     @ResponseBody
-    public Assurance ajouterAssurance(@RequestBody Assurance Assurance,@PathVariable("cinBF") int cinBF,@PathVariable("matricule") String matricule) {
-        return assuranceService.addAssuranceIncludeContBenef(Assurance,cinBF,matricule);
+    public Assurance ajouterAssurance(@RequestBody Assurance assurance,@PathVariable("cinBF") int cinBF,@PathVariable("matricule") String matricule) {
+        return assuranceService.addAssuranceIncludeContBenef(assurance,cinBF,matricule);
     }
 }
