@@ -18,8 +18,6 @@ public class ContratController {
     IBeneficiaireService beneficiaireService;
 
 
-
-
     @GetMapping("/all")
     @ResponseBody
     public List<Contrat> getAll() {
@@ -35,20 +33,19 @@ public class ContratController {
 
     @PostMapping("/add")
     @ResponseBody
-    public Contrat ajouterContrat(@RequestBody Contrat Contrat) {
-        return contratService.addContrat(Contrat);
+    public Contrat ajouterContrat(@RequestBody Contrat contrat) {
+        return contratService.addContrat(contrat);
     }
 
     @PostMapping("/update")
     @ResponseBody
-    public Contrat updateContrat(@RequestBody Contrat Contrat) {
-        return contratService.updateContrat(Contrat);
+    public Contrat updateContrat(@RequestBody Contrat contrat) {
+        return contratService.updateContrat(contrat);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Boolean deleteContrat(@PathVariable int id)
-    {
+    public Boolean deleteContrat(@PathVariable int id) {
         return contratService.deleteContrat(id);
     }
 
