@@ -30,14 +30,14 @@ public class BeneficiaireController {
 
     @PostMapping("/add")
     @ResponseBody
-    public Beneficiaire addBeneficiaire(@RequestBody Beneficiaire Beneficiaire) {
-        return beneficiaireService.addBeneficiaire(Beneficiaire);
+    public Beneficiaire addBeneficiaire(@RequestBody Beneficiaire beneficiaire) {
+        return beneficiaireService.addBeneficiaire(beneficiaire);
     }
 
     @PostMapping("/update")
     @ResponseBody
-    public Beneficiaire updateBeneficiaire(@RequestBody Beneficiaire Beneficiaire) {
-        return beneficiaireService.updateBeneficiaire(Beneficiaire);
+    public Beneficiaire updateBeneficiaire(@RequestBody Beneficiaire beneficiaire) {
+        return beneficiaireService.updateBeneficiaire(beneficiaire);
     }
 
     @DeleteMapping("/delete/{id}")
