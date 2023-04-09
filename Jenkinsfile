@@ -7,6 +7,12 @@ pipeline {
                 git branch: 'developELA', url: 'https://github.com/lakhalEya/SpringDataJPA-CrudRepo.git'
             }
         }
+        stage('Verify Maven and Java versions') {
+            steps {
+                sh 'mvn --version'
+                sh 'java --version'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean package'
