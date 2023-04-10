@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Verify Maven and Java versions') {
             steps {
-               // sh 'mvn --version'
+                sh 'mvn --version'
                 sh 'java --version'
             }
         }
