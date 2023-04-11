@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'mvn clean package'
             }
-        }*/
+        }
         stage('Clean') {
             steps {
                 sh 'mvn clean'
@@ -29,16 +29,19 @@ pipeline {
             }
         }
 
-        stage('Sonar') {
-          steps {
-            sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dsonar.host.url=http://http://192.168.33.10/:9000"
-          }
-        }
+
         
         stage('Unit tests') {
             steps {
                 sh 'mvn test'
             }
+        }
+        
+  */              
+        stage('Sonar') {
+          steps {
+            sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dsonar.host.url=http://192.168.33.10/:9000"
+          }
         }
     }
 
