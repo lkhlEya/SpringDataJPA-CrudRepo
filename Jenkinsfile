@@ -13,11 +13,22 @@ pipeline {
                 sh 'java --version'
             }
         }
-        stage('Build') {
+        /*stage('Build') {
             steps {
                 sh 'mvn clean package'
             }
+        }*/
+        stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
         }
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
         stage('Unit tests') {
             steps {
                 sh 'mvn test'
