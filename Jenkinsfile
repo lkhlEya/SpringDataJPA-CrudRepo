@@ -13,7 +13,7 @@ pipeline {
                 sh 'java --version'
             }
         }
-        /*
+       
         stage('Clean') {
             steps {
                 sh 'mvn clean'
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        
+         /*
         stage('Unit tests') {
             steps {
                 sh 'mvn test'
