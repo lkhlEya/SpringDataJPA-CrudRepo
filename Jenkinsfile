@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-         /*
+      
         stage('Unit tests') {
             steps {
                 sh 'mvn test'
@@ -44,7 +44,7 @@ pipeline {
                 sh "mvn deploy -DskipTests -DaltDeploymentRepository=${esprit-spring-ioc-1.0-releases}::default::http://192.168.33.10:8081/repository/Spring_IOC/ -Dusername=admin -Dpassword=nexus"
             }
         }
- */
+ 
         stage('Sonar') {
           steps {
             sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dsonar.host.url=http://192.168.33.10:9000"
