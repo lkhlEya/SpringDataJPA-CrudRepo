@@ -179,5 +179,6 @@ public class AssuranceServiceTest {
         Assertions.assertEquals(assurance1, actualAssurance);
     }
 */
+
 }
 
