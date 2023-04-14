@@ -60,5 +60,5 @@ stages {
             subject: "Build succeeded in ${currentBuild.fullDisplayName}",
             body: "Everything is working fine with ${env.BUILD_URL}"
         }
-    }
-}*/
+    }*/
+}
