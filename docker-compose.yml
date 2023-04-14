@@ -1,0 +1,45 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    container_name: mysql-container-compose
+
+
+  sonarqube:
+    image: sonarqube
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - SonarQube_data:/opt/SonarQube/data
+      - SonarQube_extensions:/opt/SonarQube/extensions
+      - SonarQube_logs:/opt/SonarQube/logs
+    container_name: sonar-compose
+    
+  nexus:
+    image: sonatype/nexus3
+    restart: always
+    ports:
+      - "8081:8081"
+    volumes:
+      - nexus-data:/nexus-data
+    container_name: nexus-compose
+
+
+volumes:
+  SonarQube_data:
+   driver: local
+  SonarQube_extensions:
+   driver: local
+  SonarQube_logs:
+   driver: local
+  nexus-data:
+   driver: local
