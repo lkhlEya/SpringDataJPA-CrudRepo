@@ -8,14 +8,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import tn.exam.exam.entity.Assurance;
+import tn.exam.exam.entity.Beneficiaire;
+import tn.exam.exam.entity.Contrat;
 import tn.exam.exam.repository.AssuranceRepository;
 import tn.exam.exam.repository.BeneficiaireRepository;
 import tn.exam.exam.repository.ContratRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -37,6 +42,41 @@ public class AssuranceServiceTest {
 
     @InjectMocks
     private AssuranceServiceImpl assuranceService;
+
+
+    @Test
+    @DisplayName("Test addAssurance method")
+    public void testAddAssurance() {
+        // Arrange
+        Assurance assurance1 = new Assurance();
+        assurance1.setIdAssurance(1);
+        assurance1.setMontant(1000);
+
+        when(assuranceRepository.saveAndFlush(any(Assurance.class))).thenReturn(assurance1);
+
+        // Act
+        Assurance actualAssurance = assuranceService.addAssurance(assurance1);
+
+        // Assert
+        Assertions.assertEquals(assurance1, actualAssurance);
+    }
+
+    @Test
+    @DisplayName("Test updateAssurance method with valid Assurance")
+    public void testUpdateAssuranceWithValidAssurance() {
+        // Arrange
+        Assurance assurance1 = new Assurance();
+        assurance1.setIdAssurance(1);
+        assurance1.setMontant(1000);
+
+        when(assuranceRepository.saveAndFlush(any(Assurance.class))).thenReturn(assurance1);
+
+        // Act
+        Assurance actualAssurance = assuranceService.updateAssurance(assurance1);
+
+        // Assert
+        Assertions.assertEquals(assurance1, actualAssurance);
+    }
 
     @Test
     @DisplayName("Test getAllAssurances method")
@@ -66,23 +106,22 @@ public class AssuranceServiceTest {
         Assertions.assertEquals(assuranceList.get(1).getMontant(), actualList.get(1).getMontant());
     }
 
-/*
     @Test
     @DisplayName("Test getAssurance method with valid id")
     public void testGetAssuranceWithValidId() {
         // Arrange
         int id = 1;
-        Assurance expectedAssurance = new Assurance();
-        expectedAssurance.setId(id);
-        expectedAssurance.setLabel("Assurance1");
+        Assurance assurance1 = new Assurance();
+        assurance1.setIdAssurance(1);
+        assurance1.setMontant(1000);
 
-        when(assuranceRepository.findById(id)).thenReturn(Optional.of(expectedAssurance));
+        when(assuranceRepository.findById(id)).thenReturn(Optional.of(assurance1));
 
         // Act
         Assurance actualAssurance = assuranceService.getAssurance(id);
 
         // Assert
-        Assertions.assertEquals(expectedAssurance, actualAssurance);
+        Assertions.assertEquals(assurance1, actualAssurance);
     }
 
     @Test
@@ -100,21 +139,44 @@ public class AssuranceServiceTest {
         Assertions.assertNull(actualAssurance);
     }
 
+    // JUnit test for deleteAssurance method
     @Test
-    @DisplayName("Test addAssurance method")
-    public void testAddAssurance() {
+    @DisplayName("Test deleteAssurance method with valid id")
+    public void testDeleteAssuranceWithValidId() {
         // Arrange
-        Assurance expectedAssurance = new Assurance();
-        expectedAssurance.setId(1);
-        expectedAssurance.setLabel("Assurance1");
+        int id = 1;
 
-        when(assuranceRepository.saveAndFlush(any(Assurance.class))).thenReturn(expectedAssurance);
+        when(assuranceRepository.existsById(id)).thenReturn(false);
 
         // Act
-        Assurance actualAssurance = assuranceService.addAssurance(expectedAssurance);
+        boolean result = assuranceService.deleteAssurance(id);
 
         // Assert
-        Assertions.assertEquals(expectedAssurance, actualAssurance);
+        Assertions.assertTrue(result);
+    }
+
+    /*
+    @Test
+    @DisplayName("Test addAssuranceIncludeContBenef method with valid inputs")
+    public void testAddAssuranceIncludeContBenefWithValidInputs() {
+        // Arrange
+        Assurance assurance1 = new Assurance();
+        assurance1.setIdAssurance(1);
+        assurance1.setMontant(1000);
+        Beneficiaire beneficiaire = new Beneficiaire();
+        beneficiaire.setCin(12345678);
+        Contrat contrat = new Contrat();
+        contrat.setMatricule("ABC123");
+
+        when(beneficiaireRepository.findBeneficiaireByCin(12345678)).thenReturn(beneficiaire);
+        when(contratRepository.findContratByMatricule("ABC123")).thenReturn(contrat);
+        when(assuranceRepository.saveAndFlush(any(Assurance.class))).thenReturn(assurance1);
+
+        // Act
+        Assurance actualAssurance = assuranceService.addAssuranceIncludeContBenef(assurance1, 12345678, "ABC123");
+
+        // Assert
+        Assertions.assertEquals(assurance1, actualAssurance);
     }
 */
 }
