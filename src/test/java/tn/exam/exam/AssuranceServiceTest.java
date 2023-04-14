@@ -65,6 +65,7 @@ public class AssuranceServiceTest {
         Assertions.assertEquals(assuranceList.get(1).getIdAssurance(), actualList.get(1).getIdAssurance());
         Assertions.assertEquals(assuranceList.get(1).getMontant(), actualList.get(1).getMontant());
     }
+
 /*
     @Test
     @DisplayName("Test getAssurance method with valid id")
