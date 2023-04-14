@@ -32,7 +32,7 @@ pipeline {
        
           stage('Deploy') {
             steps {
-                sh "mvn deploy -DskipTests -DaltDeploymentRepository=deploymentRepo::default::http://192.168.33.10:8081/repository/maven-snapshots/ -Dusername=admin -Dpassword=nexus"
+                sh "mvn deploy -DskipTests -DaltDeploymentRepository=esprit-spring-ioc-1.0-releases::default::http://192.168.33.10:8081/repository/Spring_IOC/ -Dusername=admin -Dpassword=nexus"
             }
         }
       /*  
