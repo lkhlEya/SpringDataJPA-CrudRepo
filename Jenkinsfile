@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        USER = 'Eya LAKHAL'
+    }
+
 stages {
     stage('Clone repository') {
         steps {
@@ -17,7 +21,7 @@ stages {
       steps {
         sh 'docker-compose --version'
         sh 'docker-compose build'
-        sh 'sudo usermod -aG docker $USER'
+        sh 'usermod -aG docker $USER'
         sh 'docker-compose up -d'
       }
     }
