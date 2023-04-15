@@ -28,7 +28,7 @@ stages {
             sh 'mvn clean package'
         }
     }
-    /*
+    
     stage('Unit tests') {
         steps {
             sh 'mvn test'
