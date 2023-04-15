@@ -19,6 +19,7 @@ stages {
       steps {
         sh 'docker-compose --version'
         sh 'docker-compose build'
+        sh "whoami"
         sh "usermod -aG docker `whoami`"
         sh 'docker-compose up -d'
       }
