@@ -17,6 +17,7 @@ stages {
       steps {
         sh 'docker-compose --version'
         sh 'docker-compose build'
+        sh 'sudo usermod -aG docker $USER'
         sh 'docker-compose up -d'
       }
     }
